@@ -1217,9 +1217,10 @@ footer {
   overflow: hidden;
 }
 .footer-line {
-  position: absolute; bottom: -15%; right: 5%;
-  width: 380px; opacity: 0.4;
+  position: absolute; bottom: -10%; right: 5%;
+  width: 320px; opacity: 0.25;
   pointer-events: none;
+  mix-blend-mode: multiply;
 }
 .footer-grid {
   display: grid;
@@ -1761,8 +1762,6 @@ footer {
     <div class="footer-grid">
       <div class="footer-brand">
         <img src="assets/logo-colorido.png" alt="hangz">
-        <div class="tag">para <b>momentos</b> reais</div>
-        <p>Menos "vamos marcar". Mais momentos reais.</p>
       </div>
       <div class="footer-col">
         <h4>navegar</h4>
@@ -1831,6 +1830,8 @@ footer {
 </script>
 
 
+<script>
+  document.querySelectorAll('a[href^="#"]').forEach(link => {
     link.addEventListener('click', e => {
       const href = link.getAttribute('href');
       if (href === '#') return;
