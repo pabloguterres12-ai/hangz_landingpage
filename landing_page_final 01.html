@@ -43,18 +43,49 @@ body {
 
 img { display: block; max-width: 100%; }
 
-/* ============= LINHAS ORGÂNICAS / DECORATIVAS =============
-   Os PNGs em assets/linha-XX.png foram exportados com fundo escuro.
-   mix-blend-mode: screen ignora o preto e deixa só a linha aparecer
-   sobre o fundo claro das seções. Em seções escuras (como .como, que tem
-   fundo navy), screen continua funcionando porque clareia.
-   Aplicado a TODOS os elementos decorativos orgânicos da landing.
-   ----------------------------------------------------------- */
+/* ============= ANIMAÇÕES DE SCROLL ============= */
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-32px);
+  transition: opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+.reveal-right {
+  opacity: 0;
+  transform: translateX(32px);
+  transition: opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+/* delay helpers */
+.delay-1 { transition-delay: 0.1s !important; }
+.delay-2 { transition-delay: 0.2s !important; }
+.delay-3 { transition-delay: 0.3s !important; }
+.delay-4 { transition-delay: 0.4s !important; }
+.delay-5 { transition-delay: 0.5s !important; }
+
+/* Linhas orgânicas com fundo preto — screen descarta o preto,
+   preserva a cor da linha sobre fundos claros */
 .hero-line-top,
 .hero-line-bot,
 .manifesto-line,
-.como-line-1,
-.como-line-2,
 .curadoria-line-1,
 .curadoria-line-2,
 .app-line,
@@ -62,6 +93,13 @@ img { display: block; max-width: 100%; }
 .waitlist-line-2,
 .parceiros-line,
 .footer-line {
+  mix-blend-mode: multiply;
+  background: transparent;
+}
+
+/* No fundo navy (.como) usamos screen para as linhas não sumirem */
+.como-line-1,
+.como-line-2 {
   mix-blend-mode: screen;
   background: transparent;
 }
@@ -1276,28 +1314,28 @@ footer {
 
 <!-- ============== HERO ============== -->
 <section class="hero">
-  <img src="assets/linha-03.png" alt="" class="hero-line-top">
-  <img src="assets/linha-02.png" alt="" class="hero-line-bot">
+  <img src="assets/Formas-01.png" alt="" class="hero-line-top">
+  <img src="assets/Formas-09.png" alt="" class="hero-line-bot">
 
   <div class="container">
     <div class="hero-grid">
       <div>
-        <div class="hero-eyebrow">
+        <div class="hero-eyebrow reveal">
           <span class="dot"></span>
           Pré-lançamento · Campinas
         </div>
-        <h1>
+        <h1 class="reveal delay-1">
           Chega de "vamos marcar".
         </h1>
-        <p class="hero-h2">
+        <p class="hero-h2 reveal delay-2">
           O <span class="accent">hangz</span> transforma vontade em plano real.
         </p>
-        <p class="hero-sub">
+        <p class="hero-sub reveal delay-3">
           Escolhe a vibe, chama a galera, encontra o lugar certo para o momento.
           Sem mensagens infinitas, sem áudio, sem enrolação.
         </p>
 
-        <div class="hero-cta">
+        <div class="hero-cta reveal delay-4">
           <a href="#waitlist" class="btn-primary">
             Entrar na lista de espera
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
@@ -1306,7 +1344,7 @@ footer {
         </div>
       </div>
 
-      <div class="hero-collage">
+      <div class="hero-collage reveal-right delay-2">
         <div class="float-tag tag-1">
           <span class="icon-circle" style="background: rgba(191, 81, 20, 0.15);">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#BF5114" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
@@ -1371,21 +1409,21 @@ footer {
 
 <!-- ============== MANIFESTO ============== -->
 <section class="manifesto" id="manifesto">
-  <img src="assets/linha-04.png" alt="" class="manifesto-line">
+  <img src="assets/Formas-03.png" alt="" class="manifesto-line">
   <div class="container">
-    <span class="section-eyebrow">o hangz</span>
-    <h2>
+    <span class="section-eyebrow reveal">o hangz</span>
+    <h2 class="reveal delay-1">
       Momento real é com <span class="accent">quem importa,</span> no lugar que combina.
     </h2>
-    <p class="section-lede">
+    <p class="section-lede reveal delay-2">
       O <strong style="color: var(--terracota); font-weight: 700;">hangz</strong> nasceu de uma verdade simples: a gente quer ver
       quem importa, mas quase sempre o plano morre no "depois a gente marca".
     </p>
-    <p>
+    <p class="reveal delay-3">
       O lugar molda o momento. A galera certa para cada vibe também. O hangz lê isso e
       entrega o fit: pessoas, lugar, hora — sem fricção, sem ruído.
     </p>
-    <p>
+    <p class="reveal delay-4">
       Cada lugar dentro do hangz passou por curadoria. Não é lista, não é diretório —
       é seleção feita a dedo para que cada hangz aconteça num espaço à altura de quem chega.
     </p>
@@ -1394,19 +1432,19 @@ footer {
 
 <!-- ============== COMO FUNCIONA ============== -->
 <section class="como" id="como">
-  <img src="assets/linha-01.png" alt="" class="como-line-1">
-  <img src="assets/linha-05.png" alt="" class="como-line-2">
+  <img src="assets/Formas-01.png" alt="" class="como-line-1">
+  <img src="assets/Formas-07.png" alt="" class="como-line-2">
 
   <div class="container">
-    <span class="section-eyebrow">como funciona</span>
-    <h2>Do "bora?" ao <span class="accent">hangz confirmado,</span> sem enrolação.</h2>
-    <p class="como-intro section-lede">
+    <span class="section-eyebrow reveal">como funciona</span>
+    <h2 class="reveal delay-1">Do "bora?" ao <span class="accent">hangz confirmado,</span> sem enrolação.</h2>
+    <p class="como-intro section-lede reveal delay-2">
       O app foi feito para remover o esforço entre querer ver alguém e estar de fato junto.
       Sem áudio interminável, sem mensagens infinitas.
     </p>
 
     <div class="steps">
-      <div class="step">
+      <div class="step reveal delay-1">
         <div class="step-num">PASSO 01</div>
         <svg class="step-icon" viewBox="0 0 60 60" fill="none">
           <circle cx="30" cy="30" r="22" stroke="#F2A16B" stroke-width="2.5"/>
@@ -1423,14 +1461,14 @@ footer {
         </svg>
         <h3>Escolha a vibe</h3>
       </div>
-      <div class="step">
+      <div class="step reveal delay-2">
         <div class="step-num">PASSO 03</div>
         <svg class="step-icon" viewBox="0 0 60 60" fill="none">
           <path d="M 14 36 L 24 46 L 46 18" stroke="#F2A16B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
         <h3>Chame sua galera</h3>
       </div>
-      <div class="step">
+      <div class="step reveal delay-3">
         <div class="step-num">PASSO 04</div>
         <svg class="step-icon" viewBox="0 0 60 60" fill="none">
           <path d="M 30 12 L 38 26 L 53 28 L 42 39 L 45 53 L 30 46 L 15 53 L 18 39 L 7 28 L 22 26 Z" stroke="#F2A16B" stroke-width="2.5" stroke-linejoin="round"/>
@@ -1443,30 +1481,30 @@ footer {
 
 <!-- ============== CURADORIA ============== -->
 <section class="curadoria" id="curadoria">
-  <img src="assets/linha-01.png" alt="" class="curadoria-line-1">
-  <img src="assets/linha-04.png" alt="" class="curadoria-line-2">
+  <img src="assets/Formas-08.png" alt="" class="curadoria-line-1">
+  <img src="assets/Formas-05.png" alt="" class="curadoria-line-2">
 
   <div class="container">
     <div class="curadoria-grid">
       <div>
-        <span class="section-eyebrow">a curadoria hangz</span>
-        <h2>O lugar certo <span class="accent">muda tudo.</span></h2>
-        <p class="curadoria-text section-lede">
+        <span class="section-eyebrow reveal">a curadoria hangz</span>
+        <h2 class="reveal delay-1">O lugar certo <span class="accent">muda tudo.</span></h2>
+        <p class="curadoria-text section-lede reveal delay-2">
           A vibe você escolhe. A galera você chama. O hangz te ajuda a encontrar
           um lugar que combine com o momento.
         </p>
-        <p class="curadoria-text">
+        <p class="curadoria-text reveal delay-3">
           Nada de lista infinita, indicação aleatória ou lugar escolhido no impulso.
           A curadoria considera o tipo de hangz, o clima do grupo e o que faz sentido
           para aquela saída acontecer bem.
         </p>
-        <p class="curadoria-text" style="font-weight: 600; color: white;">
+        <p class="curadoria-text reveal delay-4" style="font-weight: 600; color: white;">
           A ideia é simples: menos dúvida, mais decisão. Menos "qualquer lugar", mais lugar certo.
         </p>
 
-        <h3 class="curadoria-list-title">Critérios da curadoria</h3>
+        <h3 class="curadoria-list-title reveal delay-4">Critérios da curadoria</h3>
         <ul class="curadoria-list">
-          <li>
+          <li class="reveal delay-1">
             <span class="check">
               <svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
             </span>
@@ -1513,13 +1551,13 @@ footer {
 
 <!-- ============== APP MOCKUP ============== -->
 <section class="app-section" id="app">
-  <img src="assets/linha-03.png" alt="" class="app-line">
+  <img src="assets/Formas-06.png" alt="" class="app-line">
   <div class="container">
     <div class="app-grid">
       <div>
-        <span class="section-eyebrow">o app por dentro</span>
-        <h2>O hangz não quer prender você. <span class="accent">Quer te lembrar de viver.</span></h2>
-        <p class="app-text section-lede">
+        <span class="section-eyebrow reveal">o app por dentro</span>
+        <h2 class="reveal delay-1">O hangz não quer prender você. <span class="accent">Quer te lembrar de viver.</span></h2>
+        <p class="app-text section-lede reveal delay-2">
           O hangz nasce para transformar vontade em presença. Para tirar o "vamos marcar"
           da conversa e levar sua galera para a mesa, para a rua, para o brinde, para o abraço.
         </p>
@@ -1590,19 +1628,19 @@ footer {
 
 <!-- ============== LISTA DE ESPERA ============== -->
 <section class="waitlist" id="waitlist">
-  <img src="assets/linha-04.png" alt="" class="waitlist-line-1">
-  <img src="assets/linha-03.png" alt="" class="waitlist-line-2">
+  <img src="assets/Formas-04.png" alt="" class="waitlist-line-1">
+  <img src="assets/Formas-02.png" alt="" class="waitlist-line-2">
 
   <div class="container">
-    <span class="section-eyebrow">lista de espera</span>
-    <h2>Faça parte da <span class="accent">primeira fase</span> do hangz em Campinas.</h2>
-    <p class="section-lede">
+    <span class="section-eyebrow reveal">lista de espera</span>
+    <h2 class="reveal delay-1">Faça parte da <span class="accent">primeira fase</span> do hangz em Campinas.</h2>
+    <p class="section-lede reveal delay-2">
       O hangz está começando aos poucos, com uma galera que quer viver mais a cidade
       e construir algo novo junto com a gente. Quem entra na lista participa dos primeiros
       testes, conhece a experiência antes do público geral e ajuda a construir os próximos hangz.
     </p>
 
-    <form class="waitlist-form" id="waitlist-form">
+    <form class="waitlist-form reveal delay-3" id="waitlist-form">
       <h3>Quero meu acesso antecipado</h3>
       <div class="form-row-2">
         <div class="form-group">
@@ -1661,11 +1699,11 @@ footer {
 
 <!-- ============== PARCEIROS ============== -->
 <section class="parceiros" id="parceiros">
-  <img src="assets/linha-01.png" alt="" class="parceiros-line">
+  <img src="assets/Formas-06.png" alt="" class="parceiros-line">
   <div class="container">
-    <span class="section-eyebrow">para estabelecimentos</span>
-    <h2>Leve para o seu local quem combina <span class="accent">com ele.</span></h2>
-    <p class="parceiros-intro section-lede">
+    <span class="section-eyebrow reveal">para estabelecimentos</span>
+    <h2 class="reveal delay-1">Leve para o seu local quem combina <span class="accent">com ele.</span></h2>
+    <p class="parceiros-intro section-lede reveal delay-2">
       O hangz direciona pessoas para estabelecimentos que combinam com a ocasião que elas querem viver.
       Em vez de listar todo mundo no mesmo lugar, a gente entende cada negócio e leva
       o público certo na hora certa — para que cada hangz que rola aí seja coerente com o que
@@ -1673,28 +1711,28 @@ footer {
     </p>
 
     <div class="parceiros-grid">
-      <div class="parceiro-card">
+      <div class="parceiro-card reveal delay-1">
         <div class="parceiro-icon">
           <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2" fill="currentColor"/></svg>
         </div>
         <h4>Público que combina</h4>
         <p>Cada cliente que chega via hangz já vem buscando o tipo de momento que o seu estabelecimento entrega. Mais cliente que volta, menos cliente perdido.</p>
       </div>
-      <div class="parceiro-card">
+      <div class="parceiro-card reveal delay-2">
         <div class="parceiro-icon">
           <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
         </div>
         <h4>Dados úteis com o tempo</h4>
         <p>Conforme os hangz vão rolando, você ganha visão do fluxo, do perfil de quem vem e dos horários que mais funcionam para o seu negócio.</p>
       </div>
-      <div class="parceiro-card">
+      <div class="parceiro-card reveal delay-3">
         <div class="parceiro-icon">
           <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
         </div>
         <h4>Visibilidade qualificada</h4>
         <p>Seu local aparece para quem combina com ele — não para todo mundo. Presença direcionada, sem competir por atenção genérica.</p>
       </div>
-      <div class="parceiro-card">
+      <div class="parceiro-card reveal delay-4">
         <div class="parceiro-icon">
           <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
         </div>
@@ -1703,7 +1741,7 @@ footer {
       </div>
     </div>
 
-    <div class="parceiros-meta">
+    <div class="parceiros-meta reveal delay-2">
       <div class="parceiros-meta-text">
         <strong>Quer entender como o hangz funciona para o seu estabelecimento?</strong>
         <span>Parceria a gente fecha cara a cara. O time vai até você.</span>
@@ -1718,7 +1756,7 @@ footer {
 
 <!-- ============== FOOTER ============== -->
 <footer>
-  <img src="assets/linha-04.png" alt="" class="footer-line">
+  <img src="assets/Formas-03.png" alt="" class="footer-line">
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
@@ -1769,7 +1807,30 @@ footer {
 </footer>
 
 <script>
-  document.querySelectorAll('a[href^="#"]').forEach(link => {
+  // ============= SCROLL REVEAL =============
+  const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+  // Hero elements trigger immediately (already in viewport)
+  revealEls.forEach(el => {
+    const section = el.closest('section');
+    if (section && section.classList.contains('hero')) {
+      // pequeno delay para deixar o browser pintar primeiro
+      setTimeout(() => el.classList.add('visible'), 100);
+    } else {
+      observer.observe(el);
+    }
+  });
+</script>
+
+
     link.addEventListener('click', e => {
       const href = link.getAttribute('href');
       if (href === '#') return;
